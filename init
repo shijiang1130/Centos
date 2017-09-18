@@ -1,0 +1,8 @@
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+cat /etc/selinux/config
+systemctl stop firewalld
+systemctl stop NetworkManager
+systemctl stop iptables
+systemctl disable iptables
+systemctl disable NetworkManager
+systemctl disable firewalld
