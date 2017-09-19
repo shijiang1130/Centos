@@ -1,0 +1,2 @@
+df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $3 " " $1 }'
+my $ret = `ssh -o \"StrictHostKeyChecking no\" root\@$xxx.xxx.xxx.xxx \"uname -r;cat /etc/redhat-release\"`;
