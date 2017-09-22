@@ -3,3 +3,10 @@ df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $3 " " $1 }'
 my $ret = `ssh -o \"StrictHostKeyChecking no\" root\@$xxx.xxx.xxx.xxx \"df -H | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $3 \" \" $1 }'\"`;
 
 my $ret = `ssh -o \"StrictHostKeyChecking no\" root\@$xxx.xxx.xxx.xxx \"uname -r;cat /etc/redhat-release\"`;
+
+pvcreate /dev/xvdb
+vgcreate data01 /dev/sdb
+lvcreate -L 7.9G data01
+mkfs.xfs -f /dev/data01/lvol0
+blkid
+
