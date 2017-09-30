@@ -6,3 +6,8 @@ systemctl stop iptables
 systemctl disable iptables
 systemctl disable NetworkManager
 systemctl disable firewalld
+
+
+ubuntu
+systemctl set-default runlevel3.target
+systemctl get-default
