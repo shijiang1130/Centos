@@ -1,0 +1,17 @@
+     cat /proc/meminfo、free、cat /proc/slabinfo
+     top、ps、cat /proc/pid/maps/status/fd
+     cat /proc/222/status
+     ls -l /proc/222/fd/* | wc
+     cat /proc/2222/maps
+     buffers/cache/slab/active/anonpages
+     Active= Active(anon) + Active(file) 
+     
+     drop_caches
+     Writing to this will cause the kernel to drop clean caches, dentries and inodes from memory, causing that memory to become free.
+     To free pagecache:
+     echo 1 > /proc/sys/vm/drop_caches 
+     To free dentries and inodes: 
+     echo 2 > /proc/sys/vm/drop_caches
+     To free pagecache, dentries and inodes: 
+     echo 3 > /proc/sys/vm/drop_caches
+     As this is a non-destructive operation and dirty objects are not freeable, the user should run `sync`first
