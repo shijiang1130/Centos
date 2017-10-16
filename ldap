@@ -1,0 +1,35 @@
+ldapsearch -x -h 172.0.0.10 -D "lyuan@lookdata.cn" -W -b "cn=users,dc=lookdata,dc=cn" -s sub "(cn=*)" cn mail sn
+
+ldap.conf
+base dc=htichina,dc=net
+
+# Another way to specify your LDAP server is to provide an
+uri ldap://172.0.0.10
+# Unix Domain Sockets to connect to a local LDAP Server.
+#uri ldap://127.0.0.1/
+#uri ldaps://127.0.0.1/   
+#uri ldapi://%2fvar%2frun%2fldapi_sock/
+# Note: %2f encodes the '/' used as directory separator
+
+# The LDAP version to use (defaults to 3
+# if supported by client library)
+ldap_version 3
+
+# The distinguished name to bind to the server with.
+# Optional: default is to bind anonymously.
+binddn lyuan@lookdata.cn
+# The credentials to bind with. 
+# Optional: default is no credential.
+bindpw MASKFORSECURITY
+
+
+apt-get install libpam-ldap nscd
+/etc/nsswitch.conf
+passwd: compat ldap
+group: compat ldap
+shadow: compat ldap
+
+/etc/pam.d/common-session
+session required pam_mkhomedir.so
+
+service nscd restart
