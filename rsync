@@ -1,0 +1,1 @@
+rsync -rvz -e 'ssh -p Port' --progress --remove-sent-files ./localpath root@remotehost:1234/remotepath
