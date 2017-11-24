@@ -9,5 +9,5 @@ sh -c 'yes "" | make oldconfig'
 make -j4 bzImage
 make -j4 modules
 make -j4 modules_install
-make install
+make modules_install install
 
