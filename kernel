@@ -1,1 +1,13 @@
 
+yum groupinstall "Development Tools"
+yum install ncurses-devel
+yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel
+
+wget  https://www.kernel.org/pub/linux/kernel
+tar -xf linux-.tar.xz -C /usr/src/
+sh -c 'yes "" | make oldconfig'
+make -j4 bzImage
+make -j4 modules
+make -j4 modules_install
+make install
+
