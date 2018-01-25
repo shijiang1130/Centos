@@ -1,0 +1,8 @@
+yum install mod_ssl
+mkdir /etc/httpd/ssl 
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/httpd/ssl/apache.key -out /etc/httpd/ssl/apache.crt
+ vi /etc/httpd/conf.d/ssl.conf
+  ServerName example.com:443
+ SSLEngine on
+SSLCertificateFile /etc/httpd/ssl/apache.crt
+SSLCertificateKeyFile /etc/httpd/ssl/apache.key 
