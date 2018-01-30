@@ -1,0 +1,8 @@
+lvs
+fdisk /dev/sda
+partprobe 
+pvcreate /dev/sda3
+vgextend cl /dev/sda3
+lvextend /dev/cl/root /dev/sda3
+xfs_info /dev/mapper/rhel-root 
+xfs_growfs -d /
