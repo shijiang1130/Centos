@@ -1,0 +1,29 @@
+[root@tng3-1]# pvs -o+pv_used
+  PV         VG   Fmt  Attr PSize  PFree  Used
+  /dev/sda1  myvg lvm2 a-   17.15G 12.15G  5.00G
+  /dev/sdb1  myvg lvm2 a-   17.15G 12.15G  5.00G
+  /dev/sdc1  myvg lvm2 a-   17.15G 12.15G  5.00G
+  /dev/sdd1  myvg lvm2 a-   17.15G  2.15G 15.00G
+  
+  [root@tng3-1 ~]# pvmove /dev/sdb1
+  /dev/sdb1: Moved: 2.0%
+ ...
+  /dev/sdb1: Moved: 79.2%
+ ...
+  /dev/sdb1: Moved: 100.0%
+  
+  [root@tng3-1]# pvs -o+pv_used
+  PV         VG   Fmt  Attr PSize  PFree  Used
+  /dev/sda1  myvg lvm2 a-   17.15G  7.15G 10.00G
+  /dev/sdb1  myvg lvm2 a-   17.15G 17.15G     0
+  /dev/sdc1  myvg lvm2 a-   17.15G 12.15G  5.00G
+  /dev/sdd1  myvg lvm2 a-   17.15G  2.15G 15.00G
+  
+  [root@tng3-1 ~]# vgreduce myvg /dev/sdb1
+  Removed "/dev/sdb1" from volume group "myvg"
+[root@tng3-1 ~]# pvs
+  PV         VG   Fmt  Attr PSize  PFree
+  /dev/sda1  myvg lvm2 a-   17.15G  7.15G
+  /dev/sdb1       lvm2 --   17.15G 17.15G
+  /dev/sdc1  myvg lvm2 a-   17.15G 12.15G
+  /dev/sdd1  myvg lvm2 a-   17.15G  2.15G
