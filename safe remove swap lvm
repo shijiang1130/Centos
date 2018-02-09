@@ -1,0 +1,8 @@
+Disable swapping for the associated logical volume:
+# swapoff -v /dev/VolGroup00/LogVol02
+Remove the LVM2 logical volume of size 512 MB:
+# lvm lvremove /dev/VolGroup00/LogVol02
+Remove the following entry from the /etc/fstab file:
+/dev/VolGroup00/LogVol02 swap swap defaults 0 0
+Test that the logical volume has been extended properly:
+# cat /proc/swaps # free
