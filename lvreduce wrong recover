@@ -1,0 +1,2 @@
+boot from iso and then
+lvextend --extents +100%FREE /dev/mapper/root-vg
