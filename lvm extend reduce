@@ -1,0 +1,25 @@
+LVM 管理命令:
+
+扩张：
+
+先扩LV再扩文件系统
+
+lvextend -L +100M /dev/vg1/lv1 逻辑卷的大小增加100M
+
+resize2fs /dev/vg1/lv1 文件系统增到逻辑卷的大小
+
+ 
+
+收缩：
+
+先减文件系统再减LV（注意顺序）
+
+umount /dev/vg1/lv1
+
+e2fsck -f /dev/vg1/lv1
+
+resize2fs /dev/vg1/lv1 100M 减小文件系统到100M
+
+lvreduce -L 100M /dev/vg1/lv1 减小逻辑卷到100M
+
+mount -a
