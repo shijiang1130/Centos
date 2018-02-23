@@ -1,0 +1,32 @@
+#yum install ssmtp
+
+systemctl stop sendmail
+systemctl stop postfix
+
+#vi /etc/ssmtp/ssmtp.conf  
+在底部加上
+root=xxxxx@qq.com        
+mailhub=smtp.qq.com:587
+AuthUser=xxx@qq.com         
+AuthPass=xxxxxxx
+UseTLS=YES                     
+UseSTARTTLS=YES
+FromLineOverride=YES
+
+配置revaliases文件，因为默认是用25端口发送的，所以要指定发送邮箱
+#vi /etc/ssmtp/revaliases
+在底部加上
+root:976593936@qq.com:smtp.qq.com:587
+然后保存
+
+#alternatives --config mta
+There are 2 programs which provide 'mta'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           /usr/sbin/sendmail.sendmail
+   2           /usr/sbin/sendmail.ssmtp
+
+Enter to keep the current selection[+], or type selection number: 2
+
+mailx -s "发件人名称  邮件标题" xxx@163.com < mesg
