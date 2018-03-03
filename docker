@@ -11,3 +11,4 @@ docker restart a34ae78756be
 
    37  rm /etc/localtime 
    38  ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
