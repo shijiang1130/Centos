@@ -48,3 +48,6 @@ systemctl unmask firewalld
 # firewall-cmd --zone=work --remove-service=smtp
  
 还有端口转发功能、自定义复杂规则功能、lockdown
+
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
