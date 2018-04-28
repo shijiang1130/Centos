@@ -1,0 +1,2 @@
+iptables -t nat -I PREROUTING -s x.x.x.x -p tcp --dport 80 -j dnat xxxx
+iptables -t nat -I POSTROUGING -s x.x.x.x -snat xxxx 
