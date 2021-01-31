@@ -1,1 +1,5 @@
 https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/
+
+http://elrepo.org/
+The ELRepo Project focuses on hardware related packages to enhance your experience with Enterprise Linux. This includes filesystem drivers, graphics drivers, network drivers, sound drivers, webcam and video drivers.
+
