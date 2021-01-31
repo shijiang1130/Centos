@@ -6,3 +6,17 @@ vgextend cl /dev/sda3
 lvextend /dev/cl/root /dev/sda3
 xfs_info /dev/mapper/rhel-root 
 xfs_growfs -d /
+
+refresh new hard disk
+for i in {0..32};do echo "- - -" >/sys/class/scsi_host/host$i/scan;done
+
+
+/var/lib/xfsdump/inventory
+xfsdump -f /root/test_backup /boot -L a1 -M media0
+xfsdump -l 1 -f /root/test_backuptest-back1 /boot -L test-bak1 -M media0
+xfsdump -l 2 -f /root/test-back2 /boot -L test-bak1 -M media0
+
+xfsrestore -f /root/test_backup /boot/
+
+xfsdump -I
+
