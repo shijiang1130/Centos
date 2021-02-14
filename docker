@@ -15,18 +15,11 @@
   ]
 }
 
+1. docker run -d --name test-docker-network --net host alpine   # it will share host network, and traffice will go throuth loopback interface.
+2. joined container 
+   2.1 docker run -d name internal --net none alpine
+   2.2 docker run -d name external --net container:internal alpine
+3. bridge docker run -d --name bridge alpine
  
- docker search centos
- 1015  docker start docker.io/ansible/centos7-ansible
- 
- 1017  docker ps -a
- 
- 1041  docker run -itd docker.io/ansible/centos7-ansible /bin/bash
- 
- 1053  docker exec -it a34ae78756be /bin/bash
-
-docker restart a34ae78756be
-
-   37  rm /etc/localtime 
-   38  ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+docker run -itd docker.io/ansible/centos7-ansible /bin/bash
 docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
