@@ -1,4 +1,10 @@
- 1014  docker search centos
+ 
+ yum install -y yum-utils device-mapper-persistent-data lvm2
+ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+ yum install docker-ce
+
+ 
+ docker search centos
  1015  docker start docker.io/ansible/centos7-ansible
  
  1017  docker ps -a
