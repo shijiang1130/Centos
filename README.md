@@ -1,4 +1,10 @@
 # Centos
+Centos 9
+https://mirrors.tuna.tsinghua.edu.cn/centos-stream/9-stream/
+https://mirrors.aliyun.com/centos-stream/9-stream/
+Centos 10
+https://mirrors.tuna.tsinghua.edu.cn/centos-stream/10-stream/
+https://mirrors.aliyun.com/centos-stream/10-stream
 
 　RHEL从7.0开始改用chrony同步时间，原ntp同步方式也可以使用，但要安装ntp服务。
 　　Chrony同步方式：
